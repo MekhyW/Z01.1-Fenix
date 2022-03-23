@@ -115,7 +115,7 @@ begin
 	inversorx : inversor16
 	port map(
 		z => nx,
-		a => zxout
+		a => zxout,
 		y => nxout
 	);
 
@@ -126,14 +126,14 @@ begin
 		y =>nyout
 	);
 
-	add16 : Add16
+	add : Add16
 	port map(
 		a => nxout,
 		b => nyout,
 		q => adderout
 	);
 
-	and16 : And16
+	and : And16
 	port map(
 		a => nxout,
 		b => nouty,
@@ -141,7 +141,7 @@ begin
 		
 	);
 
-	mux16 : Mux16
+	mux : Mux16
 	port map(
 		a => adderout,
 		b => andout,
@@ -157,10 +157,10 @@ begin
 	);
 	compara : comparador16
 	port map(
-		a => precomp
+		a => precomp,	
 		zrc => zr,
 		ngc => ng
 	);
 
-	saida <= precomp
+	saida <= precomp;
 end architecture;
