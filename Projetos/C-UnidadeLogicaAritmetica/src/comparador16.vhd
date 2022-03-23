@@ -18,7 +18,6 @@ architecture rtl of comparador16 is
   -- e componentes (outros módulos) que serao
   -- utilizados nesse modulo.
 
-
 begin
   -- Implementação vem aqui!
   zr <= '1' when (a = "0000000000000000") else

@@ -34,6 +34,4 @@ begin
     b => "0000000000000001",
     q => incrementado
   );
-
-
 end architecture;
