@@ -103,35 +103,35 @@ begin
 		z => zx,
 		a => x,
 		y => zxout
-	)
+	);
 
 	zeradory : zerador16
 	port map(
 		z => zy,
 		a =>y,
 		y => zyout
-	)
+	);
 
 	inversorx : inversor16
 	port map(
 		z => nx,
 		a => zxout
 		y => nxout
-	)
+	);
 
 	inversory : inversor16
 	port map(
 		z => ny,
 		a => y,
 		y =>nyout
-	)
+	);
 
 	add16 : Add16
 	port map(
 		a => nxout,
 		b => nyout,
 		q => adderout
-	)
+	);
 
 	and16 : And16
 	port map(
@@ -139,7 +139,7 @@ begin
 		b => nouty,
 		q => andout
 		
-	)
+	);
 
 	mux16 : Mux16
 	port map(
@@ -147,20 +147,20 @@ begin
 		b => andout,
 		sel => f,
 		q => muxout
-	)
+	);
 
 	inversor0 : inversor16
 	port map(
 		z => no,
 		a => muxout,
 		y => precomp
-	)
+	);
 	compara : comparador16
 	port map(
 		a => precomp
 		zrc => zr,
 		ngc => ng
-	)
+	);
 
 	saida <= precomp
 end architecture;
