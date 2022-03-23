@@ -134,7 +134,7 @@ begin
 	);
 
 
-	and : And16
+	andy : And16
 	port map(
 		a => nxout,
 		b => nyout,
