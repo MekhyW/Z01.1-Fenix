@@ -102,8 +102,7 @@ begin
 	(
 		z => zx,
 		a => x,
-		y => zxout	
-
+		y => zxout
 	)
 
 	zeradory : zerador16
@@ -164,5 +163,4 @@ begin
 	)
 
 	saida <= precomp
-
 end architecture;
