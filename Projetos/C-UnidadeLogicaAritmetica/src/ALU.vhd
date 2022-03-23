@@ -108,7 +108,7 @@ begin
 	zeradory : zerador16
 	port map(
 		z => zy,
-		a =>y,
+		a => y,
 		y => zyout
 	);
 
@@ -122,7 +122,7 @@ begin
 	inversory : inversor16
 	port map(
 		z => ny,
-		a => y,
+		a => zyout,
 		y =>nyout
 	);
 
@@ -133,10 +133,11 @@ begin
 		q => adderout
 	);
 
+
 	and : And16
 	port map(
 		a => nxout,
-		b => nouty,
+		b => nyout,
 		q => andout
 		
 	);
