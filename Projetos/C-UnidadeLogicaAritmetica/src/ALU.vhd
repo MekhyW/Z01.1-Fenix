@@ -102,8 +102,7 @@ begin
 	(
 		z => zx,
 		a => x,
-		y => zxout
-		
+		y => zxout	
 
 	)
 
@@ -163,5 +162,7 @@ begin
 		zrc => zr,
 		ngc => ng
 	)
+
+	saida <= precomp
 
 end architecture;
