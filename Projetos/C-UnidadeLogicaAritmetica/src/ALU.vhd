@@ -144,8 +144,8 @@ begin
 
 	mux : Mux16
 	port map(
-		a => adderout,
-		b => andout,
+		a => andout,
+		b => adderout,
 		sel => f,
 		q => muxout
 	);
