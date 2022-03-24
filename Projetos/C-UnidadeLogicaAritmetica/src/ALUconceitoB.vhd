@@ -39,7 +39,8 @@ entity ALUb is
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
-			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
+			saida: out STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
+			carry: out STD_LOGIC
 	);
 end entity;
 
@@ -62,11 +63,12 @@ architecture  rtl OF ALUb is
 		);
 	end component;
 
-	component Add16 is
+	component Add16B is
 		port(
 			a   :  in STD_LOGIC_VECTOR(15 downto 0);
 			b   :  in STD_LOGIC_VECTOR(15 downto 0);
-			q   : out STD_LOGIC_VECTOR(15 downto 0)
+			q   : out STD_LOGIC_VECTOR(15 downto 0);
+			vaicarry : out STD_LOGIC
 		);
 	end component;
 
@@ -154,7 +156,8 @@ begin
 	port map(
 		a => nxout,
 		b => nyout,
-		q => adderout
+		q => adderout,
+		vaicarry => carry
 	);
 
 	and1 : And16

@@ -12,7 +12,8 @@ entity Add16 is
 	port(
 		a   :  in STD_LOGIC_VECTOR(15 downto 0);
 		b   :  in STD_LOGIC_VECTOR(15 downto 0);
-		q   : out STD_LOGIC_VECTOR(15 downto 0)
+		q   : out STD_LOGIC_VECTOR(15 downto 0);
+    vaicarry : out STD_LOGIC
 	);
 end entity;
 
@@ -144,5 +145,6 @@ architecture rtl of Add16 is
       b => b(15),
       c => carry(15),
       soma => q(15)
+      vaium => vaicarry
     );
 end architecture;
