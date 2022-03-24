@@ -163,5 +163,6 @@ begin
 		ngc => ng
 	);
 
+	
 	saida <= precomp;
 end architecture;
