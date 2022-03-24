@@ -28,10 +28,14 @@ architecture rtl of Inc16 is
       );
   end component;
 
+  signal b: std_logic_vector(15 downto 0);
+
 begin
-  u1: Add16 port map(
+  b <= "0000000000000001";
+  add : Add16 
+  port map(
     a => a,
-    b => "0000000000000001",
+    b => b,
     q => q
   );
 end architecture;
