@@ -112,4 +112,5 @@ begin
   comparacao: comparador16 port map(precomp, zr, ng);
 
   saida <= precomp;
+
 end architecture;
