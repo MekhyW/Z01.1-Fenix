@@ -40,15 +40,16 @@ architecture rtl of TopLevel is
 
 --- IMPORTAR A ULA
 
-	component ALUb is
+	component ALUa is
 		port(
 			x,y:   in STD_LOGIC_VECTOR(15 downto 0); -- entradas de dados da ALU
 			zx:    in STD_LOGIC;                     -- zera a entrada x
 			nx:    in STD_LOGIC;                     -- inverte a entrada x
 			zy:    in STD_LOGIC;                     -- zera a entrada y
 			ny:    in STD_LOGIC;                     -- inverte a entrada y
-			f:     in STD_LOGIC_VECTOR(1 downto 0);  -- se 0 calcula x & y, se 1 x + y se nãp x xor y
+			f:     in STD_LOGIC_VECTOR(1 downto 0);  -- se 0 calcula x & y, se 1 calcula x + y se 2 calcula x xor y
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
+            sf:    in STD_LOGIC;                     -- se 0 saída é x, se 1 saída é y
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
 			saida: out STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
@@ -93,7 +94,7 @@ signal entrada0,entrada1,aluout : std_logic_vector(15 downto 0);
 begin
 	entrada0 <= "0000000000000001"; -- 5555 (16)
 	entrada1 <= "0111111111111111"; -- FF (16)
-	alu : ALUb port map(
+	alu : ALUa port map(
 		x => entrada0,
 		y => entrada1,
 		zx => SW(0),
@@ -102,6 +103,7 @@ begin
 		ny => SW(3),
 		f  => SW(5 downto 4),
 		no => SW(6),
+		sf => SW(9),
 		zr => LEDR(0),
 		ng => LEDr(1),
 		saida => aluout,
