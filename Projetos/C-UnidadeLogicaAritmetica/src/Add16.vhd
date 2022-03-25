@@ -145,6 +145,9 @@ architecture rtl of Add16 is
       b => b(15),
       c => carry(15),
       soma => q(15)
-      vaium => vaicarry
     );
+-- 00 - > 1 tem que ser 1 p ligar o carry 
+-- 11 - > 0 tem que ser 1 p ligar o carry
+
+    vaicarry <=  not( (a(15) or b(15)) and q(15) )  
 end architecture;
