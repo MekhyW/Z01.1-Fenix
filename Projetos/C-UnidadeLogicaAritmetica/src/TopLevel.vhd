@@ -24,8 +24,7 @@ entity TopLevel is
 		HEX1     : out std_logic_vector(6 downto 0);
 		HEX2     : out std_logic_vector(6 downto 0);
 		HEX3     : out std_logic_vector(6 downto 0);
-		LED0     : out std_logic; -- definindo os leds para ligar zr e ng
-		LED1     : out std_logic
+		LEDR     : out std_logic_vector(9 downto 0) -- definindo os leds para ligar zr e ng
 );
 end entity;
 
@@ -52,7 +51,8 @@ architecture rtl of TopLevel is
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
-			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
+			saida: out STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
+			carry: out STD_LOGIC
 		);
 	end component;
 
@@ -91,8 +91,8 @@ signal entrada0,entrada1,aluout : std_logic_vector(15 downto 0);
 ----------------
 
 begin
-	entrada0 <= "0101010101010101"; -- 5555 (16)
-	entrada1 <= "0000000011111111"; -- FF (16)
+	entrada0 <= "1111111111111111"; -- 5555 (16)
+	entrada1 <= "0000000000000001"; -- FF (16)
 	alu : ALUb port map(
 		x => entrada0,
 		y => entrada1,
@@ -102,9 +102,11 @@ begin
 		ny => SW(3),
 		f  => SW(5 downto 4),
 		no => SW(6),
-		zr => LED0,
-		ng => LED1,
-		saida => aluout
+		zr => LEDR(0),
+		ng => LEDr(1),
+		saida => aluout,
+		carry => LEDR(9)
+		
 	);
 
 	u1 : sevenSeg port map(

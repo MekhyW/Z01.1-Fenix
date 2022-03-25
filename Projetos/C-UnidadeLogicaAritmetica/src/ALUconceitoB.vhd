@@ -119,6 +119,7 @@ architecture  rtl OF ALUb is
 	end component;
 
    SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,xorout,precomp: std_logic_vector(15 downto 0);
+   SIGNAL CARRYOUT : STD_LOGIC;
 
 begin
   -- Implementação vem aqui!
@@ -152,12 +153,12 @@ begin
 		y => nyout
 	);
 
-	add : Add16
+	add : Add16B
 	port map(
 		a => nxout,
 		b => nyout,
 		q => adderout,
-		vaicarry => carry
+		vaicarry => CARRYOUT
 	);
 
 	and1 : And16
@@ -196,6 +197,6 @@ begin
 		zr => zr,
 		ng => ng
 	);
-
+	carry <= CARRYOUT;
 	saida <= precomp;
 end architecture;
