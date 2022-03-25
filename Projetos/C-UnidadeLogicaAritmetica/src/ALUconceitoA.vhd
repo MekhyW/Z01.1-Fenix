@@ -2,28 +2,7 @@
 -- by Luciano Soares
 -- ALU.vhd
 
--- Unidade Lógica Aritmética (ULA)
--- Recebe dois valores de 16bits e
--- calcula uma das seguintes funções:
--- X+y, x-y, y-x, 0, 1, -1, x, y, -x, -y,
--- X+1, y+1, x-1, y-1, x&y, x|y
--- De acordo com os 6 bits de entrada denotados:
--- zx, nx, zy, ny, f, no.
--- Também calcula duas saídas de 1 bit:
--- Se a saída == 0, zr é definida como 1, senão 0;
--- Se a saída <0, ng é definida como 1, senão 0.
--- a ULA opera sobre os valores, da seguinte forma:
--- se (zx == 1) então x = 0
--- se (nx == 1) então x =! X
--- se (zy == 1) então y = 0
--- se (ny == 1) então y =! Y
--- se (f == 1) então saída = x + y
--- se (f == 0) então saída = x & y
--- se (no == 1) então saída = !saída
--- se (out == 0) então zr = 1
--- se (out <0) então ng = 1
-
--- Ula conceito B
+-- Ula conceito A
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -37,6 +16,7 @@ entity ALUb is
 			ny:    in STD_LOGIC;                     -- inverte a entrada y
 			f:     in STD_LOGIC_VECTOR(1 downto 0);  -- se 0 calcula x & y, se 1 calcula x + y se 2 calcula x xor y
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
+            sf:    in STD_LOGIC;                     -- se 0 saída é x, se 1 saída é y
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
 			saida: out STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
@@ -107,7 +87,7 @@ architecture  rtl OF ALUb is
 		);
 	end component;
 
-	-- componet xor para ula do conceito B (mux que selecionara entre add and ou xor)
+	-- component xor para ula do conceito B (mux que selecionara entre add and ou xor)
 	component muxXor is
 		port(
 			a   :  in STD_LOGIC_VECTOR(15 downto 0);
@@ -118,7 +98,16 @@ architecture  rtl OF ALUb is
 		);
 	end component;
 
-   SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,xorout,precomp: std_logic_vector(15 downto 0);
+    -- componente que faz o shift left e shift right de um vetor de 16 bits
+    component shift16 is
+        port(
+            a   :  in  STD_LOGIC_VECTOR(15 downto 0);
+            sel :  in  STD_LOGIC_VECTOR(1 downto 0);
+            q   : out STD_LOGIC_VECTOR(15 downto 0)
+        );
+    end component;
+
+   SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,xorout,precomp,shifter: std_logic_vector(15 downto 0);
    SIGNAL CARRYOUT : STD_LOGIC;
 
 begin
@@ -197,6 +186,15 @@ begin
 		zr => zr,
 		ng => ng
 	);
+
+    shift : shift16
+    port map(
+        a => precomp,
+        sel => f,
+        q => shifter
+    );
+
 	carry <= CARRYOUT;
-	saida <= precomp;
+	saida <= shifter;
+    
 end architecture;

@@ -8,7 +8,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
-entity Add16 is
+entity Add16B is
 	port(
 		a   :  in STD_LOGIC_VECTOR(15 downto 0);
 		b   :  in STD_LOGIC_VECTOR(15 downto 0);
@@ -17,7 +17,7 @@ entity Add16 is
 	);
 end entity;
 
-architecture rtl of Add16 is
+architecture rtl of Add16B is
   -- Aqui declaramos sinais (fios auxiliares)
   -- e componentes (outros módulos) que serao
   -- utilizados nesse modulo.
@@ -146,8 +146,6 @@ architecture rtl of Add16 is
       c => carry(15),
       soma => q(15)
     );
--- 00 - > 1 tem que ser 1 p ligar o carry 
--- 11 - > 0 tem que ser 1 p ligar o carry
 
     vaicarry <=  not( (a(15) or b(15)) and q(15) )  
 end architecture;
