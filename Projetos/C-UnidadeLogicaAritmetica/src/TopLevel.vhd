@@ -91,8 +91,8 @@ signal entrada0,entrada1,aluout : std_logic_vector(15 downto 0);
 ----------------
 
 begin
-	entrada0 <= "1111111111111111"; -- 5555 (16)
-	entrada1 <= "0000000000000001"; -- FF (16)
+	entrada0 <= "0000000000000001"; -- 5555 (16)
+	entrada1 <= "0111111111111111"; -- FF (16)
 	alu : ALUb port map(
 		x => entrada0,
 		y => entrada1,

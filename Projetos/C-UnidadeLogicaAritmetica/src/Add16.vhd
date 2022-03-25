@@ -30,6 +30,7 @@ architecture rtl of Add16B is
   end component;
 
   signal carry: STD_LOGIC_VECTOR(15 downto 0);
+  signal lastBit : std_logic;
 
   begin
     -- Implementação vem aqui!
@@ -144,8 +145,10 @@ architecture rtl of Add16B is
       a => a(15),
       b => b(15),
       c => carry(15),
-      soma => q(15)
+      soma => lastBit
     );
 
-    vaicarry <=  not( (a(15) or b(15)) and q(15) )  
+    q(15) <= lastBit;
+
+    vaicarry <=  (not(a(15)) and not(b(15)) and lastBit) or (a(15) and b(15) and not(lastBit));  
 end architecture;
