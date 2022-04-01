@@ -28,7 +28,7 @@ if not os.path.isdir(tst):
     
 print("===================================================")
 print("Starting GUI")
-
+print(len(sys.argv))
 if len(sys.argv) < 2:
     print("Wrong number of arguments!")
 else:
