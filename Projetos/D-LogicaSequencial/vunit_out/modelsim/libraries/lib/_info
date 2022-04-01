@@ -1,0 +1,528 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial
+Ecounterdown
+Z1 w1648697301
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 2
+R0
+Z4 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/CounterDown.vhd
+Z5 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/CounterDown.vhd
+l0
+L7 1
+VT^dVPIaBo[k8Ee;^=O>X_0
+!s100 _8<`0C=R7;jA<QoiQjAa90
+Z6 OV;C;2020.1;71
+33
+Z7 !s110 1648697361
+!i10b 1
+Z8 !s108 1648697361.000000
+Z9 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/CounterDown.vhd|
+Z10 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/CounterDown.vhd|
+!i113 1
+Z11 o-quiet -2008 -work lib
+Z12 tExplicit 1 CvgOpt 0
+Aarch
+R2
+R3
+DEx4 work 11 counterdown 0 22 T^dVPIaBo[k8Ee;^=O>X_0
+!i122 2
+l16
+L14 5
+V02^bbbbS=2SGDiYYB^N:e3
+!s100 @SFL?;NULn5ESS@mHg@?P1
+R6
+33
+R7
+!i10b 1
+R8
+R9
+R10
+!i113 1
+R11
+R12
+Eflipflopjk
+R1
+R2
+R3
+!i122 1
+R0
+Z13 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopJK.vhd
+Z14 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopJK.vhd
+l0
+L7 1
+VATD6G@DdVN]g0cVP0=KJ;3
+!s100 V3HK<EU]?VL1Yo?Le0:dM3
+R6
+33
+R7
+!i10b 1
+Z15 !s108 1648697360.000000
+Z16 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopJK.vhd|
+Z17 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopJK.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 10 flipflopjk 0 22 ATD6G@DdVN]g0cVP0=KJ;3
+!i122 1
+l19
+L17 5
+VTKhR<h<kE6kV`Z;:JUPhe3
+!s100 oM>3df^WgY`HI3lZRjKod2
+R6
+33
+R7
+!i10b 1
+R15
+R16
+R17
+!i113 1
+R11
+R12
+Eflipflopt
+R1
+R2
+R3
+!i122 0
+R0
+Z18 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopT.vhd
+Z19 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopT.vhd
+l0
+L7 1
+V`AO^=_N27FFNd[eG_VQ463
+!s100 B;=;MIR8d83KKWnMTIYh02
+R6
+33
+Z20 !s110 1648697360
+!i10b 1
+R15
+Z21 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopT.vhd|
+Z22 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/conceitoA/FlipFlopT.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 9 flipflopt 0 22 `AO^=_N27FFNd[eG_VQ463
+!i122 0
+l18
+L16 5
+V>MWg^oTX86;465BB87Nie2
+!s100 b6d><9mh4Oa[haG@4D=T`3
+R6
+33
+R20
+!i10b 1
+R15
+R21
+R22
+!i113 1
+R11
+R12
+Epc
+w1648697655
+Z23 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+R2
+R3
+!i122 15
+R0
+8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/PC.vhd
+F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/PC.vhd
+l0
+L18 1
+VP>a25U<6lJ0P9QK>75o6:3
+!s100 1NdmF_o;7H0;:J^S?83kN3
+R6
+33
+!s110 1648697658
+!i10b 1
+!s108 1648697658.000000
+!s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/PC.vhd|
+!s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/PC.vhd|
+!i113 1
+R11
+R12
+Eram4k
+R1
+R2
+R3
+!i122 11
+R0
+Z24 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram4K.vhd
+Z25 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram4K.vhd
+l0
+L8 1
+Vz8dhdjLKA6AlXRDQnUY4b0
+!s100 ESk?XNEfJCWi[LAlUVY:i3
+R6
+33
+R7
+!i10b 1
+R8
+Z26 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram4K.vhd|
+Z27 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram4K.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 5 ram4k 0 22 z8dhdjLKA6AlXRDQnUY4b0
+!i122 11
+l61
+Z28 L18 47
+VSh[@BglPK72h9gXIB`o^90
+!s100 kd?>a7=a5B6`QIlTL<6Di0
+R6
+33
+R7
+!i10b 1
+R8
+R26
+R27
+!i113 1
+R11
+R12
+Eram512
+R1
+R2
+R3
+!i122 10
+R0
+Z29 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram512.vhd
+Z30 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram512.vhd
+l0
+L8 1
+V8[<08i[R4ikhzV`Li1VTh1
+!s100 1@Ji=O6R2bCM?3<4JVEVe1
+R6
+33
+R7
+!i10b 1
+R8
+Z31 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram512.vhd|
+Z32 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram512.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 6 ram512 0 22 8[<08i[R4ikhzV`Li1VTh1
+!i122 10
+l61
+R28
+Vhk_k7>:kZ@:VOD`<D5P5@3
+!s100 z22T`J6H?E><^NJ>Bi?df1
+R6
+33
+R7
+!i10b 1
+R8
+R31
+R32
+!i113 1
+R11
+R12
+Eram64
+R1
+R2
+R3
+!i122 9
+R0
+Z33 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram64.vhd
+Z34 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram64.vhd
+l0
+L8 1
+VHRL`C4[eJ50a:k2gb[ecM2
+!s100 gg_:9eMG?gXI@fHk9bKn=3
+R6
+33
+R7
+!i10b 1
+R8
+Z35 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram64.vhd|
+Z36 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram64.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 5 ram64 0 22 HRL`C4[eJ50a:k2gb[ecM2
+!i122 9
+l61
+R28
+VHD`Pk83jE5m;:`WEO[JV11
+!s100 EXo[@o=MmjB[7QJ?cW27K1
+R6
+33
+R7
+!i10b 1
+R8
+R35
+R36
+!i113 1
+R11
+R12
+Eram8
+R1
+R2
+R3
+!i122 8
+R0
+Z37 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram8.vhd
+Z38 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram8.vhd
+l0
+L8 1
+VVj4LCZ8Lb8=jZ@YcZTX@g2
+!s100 R5mZ`al9n>P1>n^5Jl6z_1
+R6
+33
+R7
+!i10b 1
+R8
+Z39 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram8.vhd|
+Z40 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Ram8.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 4 ram8 0 22 Vj4LCZ8Lb8=jZ@YcZTX@g2
+!i122 8
+l60
+L18 46
+Vf:1Kb7h_Wl6UHPK4z1_Fz0
+!s100 [5@gV:SLaghfjfKZ[l]BD0
+R6
+33
+R7
+!i10b 1
+R8
+R39
+R40
+!i113 1
+R11
+R12
+Eregister16
+R1
+R2
+R3
+!i122 7
+R0
+Z41 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register16.vhd
+Z42 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register16.vhd
+l0
+L8 1
+VLBR;A=e>>e_QSBKCXWa5d3
+!s100 n^CUeJ^:id2hXcoBoB>TS3
+R6
+33
+R7
+!i10b 1
+R8
+Z43 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register16.vhd|
+Z44 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register16.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 10 register16 0 22 LBR;A=e>>e_QSBKCXWa5d3
+!i122 7
+l28
+Z45 L17 15
+Vj0D]bK7X96N_A^^];hcl=1
+!s100 YnFM]HZCl7OTF60hcb0Y41
+R6
+33
+R7
+!i10b 1
+R8
+R43
+R44
+!i113 1
+R11
+R12
+Eregister32
+R1
+R2
+R3
+!i122 6
+R0
+Z46 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register32.vhd
+Z47 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register32.vhd
+l0
+L8 1
+VP]c@k:W8fWg]Xko[>MWb^1
+!s100 []:^=AY8a3]ML1PkdZ@Ea3
+R6
+33
+R7
+!i10b 1
+R8
+Z48 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register32.vhd|
+Z49 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register32.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 10 register32 0 22 P]c@k:W8fWg]Xko[>MWb^1
+!i122 6
+l28
+R45
+V]3P?FSXNh>CVl8]SYkW9`1
+!s100 aTL;jbJ3PazM1NWBhhD_g3
+R6
+33
+R7
+!i10b 1
+R8
+R48
+R49
+!i113 1
+R11
+R12
+Eregister64
+R1
+R2
+R3
+!i122 5
+R0
+Z50 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register64.vhd
+Z51 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register64.vhd
+l0
+L8 1
+V;LzQ2fOcY6f?Oc68WJCXG2
+!s100 LCbS]1neA;d2ePolK?XW]3
+R6
+33
+R7
+!i10b 1
+R8
+Z52 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register64.vhd|
+Z53 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register64.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 10 register64 0 22 ;LzQ2fOcY6f?Oc68WJCXG2
+!i122 5
+l28
+L17 14
+VHkA^2Z3?mIB4GnVQcCiOY3
+!s100 c9EJ1e>]RZ`Ehme2lkE5n3
+R6
+33
+R7
+!i10b 1
+R8
+R52
+R53
+!i113 1
+R11
+R12
+Eregister8
+R1
+R2
+R3
+!i122 4
+R0
+Z54 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register8.vhd
+Z55 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register8.vhd
+l0
+L8 1
+V9P<nc9YOOPP_Z`H4KFKkR3
+!s100 RH;m?0bQIi^ohZMhS9XdS0
+R6
+33
+R7
+!i10b 1
+R8
+Z56 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register8.vhd|
+Z57 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/Register8.vhd|
+!i113 1
+R11
+R12
+Aarch
+R2
+R3
+DEx4 work 9 register8 0 22 9P<nc9YOOPP_Z`H4KFKkR3
+!i122 4
+l28
+R45
+VkfB5Gz3894K=P03aMO]MM0
+!s100 NMTFBP[;Maoz:;oX_Dhd71
+R6
+33
+R7
+!i10b 1
+R8
+R56
+R57
+!i113 1
+R11
+R12
+Etoplevel
+R1
+R23
+R2
+R3
+!i122 3
+R0
+Z58 8/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/TopLevel.vhd
+Z59 F/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/TopLevel.vhd
+l0
+L20 1
+V>4[C3MXfWFE>`94K>Sk>00
+!s100 nYCZA@7o7NTJMV<DGVZhX2
+R6
+33
+R7
+!i10b 1
+R8
+Z60 !s90 -quiet|-modelsimini|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/vunit_out/modelsim/modelsim.ini|-2008|-work|lib|/home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/TopLevel.vhd|
+Z61 !s107 /home/borg/Z01.1-Fenix/Projetos/D-LogicaSequencial/src/TopLevel.vhd|
+!i113 1
+R11
+R12
+Artl
+R23
+R2
+R3
+DEx4 work 8 toplevel 0 22 >4[C3MXfWFE>`94K>Sk>00
+!i122 3
+l53
+L31 39
+Vm1:IVeUR2V[hSTH@moeLM2
+!s100 ;2<k5]a?V?CA9D8hgaJea2
+R6
+33
+R7
+!i10b 1
+R8
+R60
+R61
+!i113 1
+R11
+R12
