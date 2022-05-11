@@ -17,13 +17,13 @@ architecture tb of tb_ControlUnit is
 
   component ControlUnit is
       port(
-        instruction                 : in STD_LOGIC_VECTOR(17 downto 0);  -- instrução para executar
-        zr,ng                       : in STD_LOGIC;                      -- valores zr(se zero) e ng(se negativo) da ALU
-        muxALUI_A                   : out STD_LOGIC;                     -- mux que seleciona entre instrução e ALU para reg. A
-        muxAM                       : out STD_LOGIC;                     -- mux que seleciona entre reg. A e Mem. RAM para ALU
-        zx, nx, zy, ny, f, no       : out STD_LOGIC;                     -- sinais de controle da ALU
-        loadA, loadD, loadM, loadPC : out STD_LOGIC                      -- sinais de load do reg. A, reg. D, Mem. RAM e Program Counter
-        );
+        instruction                              : in STD_LOGIC_VECTOR(17 downto 0);  -- instrução para executar
+        zr,ng                                    : in STD_LOGIC;                      -- valores zr(se zero) e ng(se negativo) da ALU
+        muxALUI_A                                : out STD_LOGIC;                     -- mux que seleciona entre instrução e ALU para reg. A
+        muxAM                                    : out STD_LOGIC;                     -- mux que seleciona entre reg. A e Mem. RAM para ALU
+        zx, nx, zy, ny, f, no                    : out STD_LOGIC;                     -- sinais de controle da ALU
+        loadA, loadD, loadS, loadM, loadPC       : out STD_LOGIC                      -- sinais de load do reg. A, reg. D, Mem. RAM e Program Counter
+        ); -- tb foi acresentado o loadS
   end component;
 
 	signal clk : std_logic := '0';
@@ -32,11 +32,11 @@ architecture tb of tb_ControlUnit is
   signal muxAM                   : STD_LOGIC := '0';
   signal muxALUI_A                   : STD_LOGIC := '0';
   signal zx, nx, zy, ny, f, no       : STD_LOGIC := '0';
-  signal loadA, loadD,  loadM, loadPC : STD_LOGIC := '0';
+  signal loadA, loadD, loadS,loadM, loadPC : STD_LOGIC := '0';
 
 begin
 
-	uCU: ControlUnit port map(instruction, zr, ng, muxALUI_A, muxAM, zx, nx, zy, ny, f, no, loadA, loadD, loadM, loadPC);
+	uCU: ControlUnit port map(instruction, zr, ng, muxALUI_A, muxAM, zx, nx, zy, ny, f, no, loadA, loadD,loadS,loadM, loadPC);
 
 	clk <= not clk after 100 ps;
 
@@ -81,27 +81,38 @@ begin
     assert(loadA = '1' and loadM = '0' and loadD = '0')
       report "TESTE 6: loadA" severity error;
 
+    -- Teste: loadS
+    instruction <= "00" & "0111111111111111";
+    wait until clk = '1';
+    assert(loadS = '0')
+      report "TESTE 7: loadS deu ruim caso 01" severity error;
+    
+    instruction <= "10" & "0000000001000000";
+    wait until clk = '1';
+    assert(loadS = '1')
+      report "TESTE 8: loadS deu ruim caso 10" severity error;
+
     -- Teste: muxALUI_A
     instruction <= "10" & "0000000000100000";
     wait until clk = '1';
     assert(muxALUI_A = '0')
-      report "TESTE 7: muxALUIA" severity error;
+      report "TESTE 9: muxALUIA" severity error;
 
     instruction <= "00" & "0111111111111111";
     wait until clk = '1';
     assert(muxALUI_A = '1')
-      report "TESTE 8: muxALUIA falso" severity error;
+      report "TESTE 10: muxALUIA falso" severity error;
 
     -- Teste: zx
     instruction <= "10" & "0001000000000000";
     wait until clk = '1';
     assert(zx = '1')
-      report "TESTE 9: zx" severity error;
+      report "TESTE 11: zx" severity error;
 
     instruction <= "00" & "0001000000000000";
     wait until clk = '1';
     assert(zx = '0')
-      report "TESTE 10: zx" severity error;
+      report "TESTE 12: zx" severity error;
 
 
    -----------------------------------------------
