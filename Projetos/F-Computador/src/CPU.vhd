@@ -72,13 +72,15 @@ architecture arch of CPU is
       zr,ng                       : in STD_LOGIC;
       muxALUI_A                   : out STD_LOGIC;
       muxAM                       : out STD_LOGIC;
+      muxSM                       : out STD_LOGIC;
       zx, nx, zy, ny, f, no       : out STD_LOGIC;
-      loadA, loadD, loadM, loadPC : out STD_LOGIC
+      loadA, loadD,loadS, loadM, loadPC : out STD_LOGIC
       );
   end component;
 
   signal c_muxALUI_A: STD_LOGIC;
   signal c_muxAM: STD_LOGIC;
+  signal c_muxSM: STD_LOGIC;
   signal c_zx: STD_LOGIC;
   signal c_nx: STD_LOGIC;
   signal c_zy: STD_LOGIC;
@@ -87,14 +89,17 @@ architecture arch of CPU is
   signal c_no: STD_LOGIC;
   signal c_loadA: STD_LOGIC;
   signal c_loadD: STD_LOGIC;
+  signal c_loadS: STD_LOGIC;
   signal c_loadPC: STD_LOGIC;
   signal c_zr: std_logic := '0';
   signal c_ng: std_logic := '0';
 
   signal s_muxALUI_Aout: STD_LOGIC_VECTOR(15 downto 0);
   signal s_muxAM_out: STD_LOGIC_VECTOR(15 downto 0);
+  signal s_muxSM_out: STD_LOGIC_VECTOR(15 downto 0);
   signal s_regAout: STD_LOGIC_VECTOR(15 downto 0);
   signal s_regDout: STD_LOGIC_VECTOR(15 downto 0);
+  signal s_regSout: STD_LOGIC_VECTOR(15 downto 0);
   signal s_ALUout: STD_LOGIC_VECTOR(15 downto 0);
 
   signal s_pcout: STD_LOGIC_VECTOR(15 downto 0);
@@ -107,6 +112,7 @@ begin
     ng => c_ng,
     muxALUI_A => c_muxALUI_A,
     muxAM => c_muxAM,
+    muxSM => c_muxSM,
     zx => c_zx,
     nx => c_nx,
     zy => c_zy,
@@ -115,6 +121,7 @@ begin
     no => c_no,
     loadA => c_loadA,
     loadD => c_loadD,
+    loadS => c_loadS,
     loadM => writeM,
     loadPC => c_loadPC
   );
@@ -133,8 +140,22 @@ begin
     output => s_regAout
   );
 
-  MUX_AM: Mux16 port map(
+  REG_S: Register16 port map(
+    clock => clock,
+    input => s_muxALUI_Aout,
+    load => c_loadS,
+    output => s_regSout
+  );
+
+  MUX_SM: Mux16 port map(
     a => s_regAout,
+    b => s_regSout,
+    sel => c_muxSM,
+    q => s_muxSM_out
+  );
+
+  MUX_AM: Mux16 port map(
+    a => s_muxSM_out,
     b => inM,
     sel => c_muxAM,
     q => s_muxAM_out

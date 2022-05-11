@@ -17,11 +17,11 @@ entity ControlUnit is
                                                                      -- ng (se negativo) da ALU
 		muxALUI_A                   : out STD_LOGIC;                     -- mux que seleciona entre
                                                                      -- instrução  e ALU para reg. A
-		muxAM                       : out STD_LOGIC;                     -- mux que seleciona entre
-                                                                     -- reg. A e Mem. RAM para ALU
+		muxAM                    : out STD_LOGIC;                     -- mux que seleciona entre
+        muxSM                    : out STD_LOGIC;                                        -- reg. A e Mem. RAM para ALU
                                                                      -- A  e Mem. RAM para ALU
 		zx, nx, zy, ny, f, no       : out STD_LOGIC;                     -- sinais de controle da ALU
-		loadA, loadD, loadM, loadPC : out STD_LOGIC               -- sinais de load do reg. A,
+		loadA, loadD,loadS, loadM, loadPC : out STD_LOGIC               -- sinais de load do reg. A,
                                                                      -- reg. D, Mem. RAM e Program Counter
     );
 end entity;
@@ -30,8 +30,9 @@ architecture arch of ControlUnit is
 
 begin
 
-  loadD <= instruction(17) and instruction(4);
-  loadM <= instruction(17) and instruction(5);
+  loadD <= instruction(17) and instruction(4); -- carrega pro registrador D
+  loadM <= instruction(17) and instruction(5); -- se salva na memoria
+  loadS <= instruction(17) and instruction(6); --  carrega pro registrador S
   loadA <= (instruction(17) and instruction(3)) or not(instruction(17));
   
   muxALUI_A <=  not (instruction(17));
@@ -43,6 +44,7 @@ begin
   no <= instruction(17) and instruction(7);
   
   muxAM <= instruction(17) and instruction(13);
+  muxSM <= instruction(17) and instruction(14);
   loadPC <= '1' when instruction(17)='1' and instruction(2 downto 0)="111" else
             '1' when instruction(17)='1' and instruction(2 downto 0)="110" and (zr='1' or ng='1') else
             '1' when instruction(17)='1' and instruction(2 downto 0)="101" and (zr='0') else
