@@ -30,7 +30,7 @@ architecture arch of ControlUnit is
 
 begin
 
-  loadD <= instruction(17) and instruction(4); -- carrega pro registrador D
+  loadD <= (instruction(17) and instruction(4)) or not (instruction(17)); -- carrega pro registrador D
   loadM <= instruction(17) and instruction(5); -- se salva na memoria
   loadS <= instruction(17) and instruction(6); --  carrega pro registrador S
   loadA <= (instruction(17) and instruction(3)) or not(instruction(17));

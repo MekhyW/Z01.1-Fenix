@@ -58,7 +58,7 @@ architecture arch of CPU is
   component pc is
     port(
       clock     : in  STD_LOGIC;
-      increment : in  STD_LOGIC;
+      increment : in  STD_LOGIC;  
       load      : in  STD_LOGIC;
       reset     : in  STD_LOGIC;
       input     : in  STD_LOGIC_VECTOR(15 downto 0);
@@ -163,7 +163,7 @@ begin
 
   REG_D: Register16 port map(
     clock => clock,
-    input => s_ALUout,
+    input => s_muxALUI_Aout,
     load => c_loadD,
     output => s_regDout
   );
