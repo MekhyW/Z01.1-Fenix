@@ -90,19 +90,19 @@ public class Code {
                         return "000001100";
                     case "(%A)":
                         return "001110000";
-                    case "$1":
-                        return "000111111";
-                    case "$0":
-                        return "000101010";
+                }
+                instrucao = mnemnonic[1] + " " + mnemnonic[2];
+                if (instrucao.equals("$1 (%A)")){
+                    return "000111111";
+                }
+                if (instrucao.equals("$0 (%A)")){
+                    return "000101010";
                 }
             case "addw":
                 instrucao = mnemnonic[1] + " " + mnemnonic[2];
                 switch (instrucao) {
                     case "%A %D":
                     case "%D %A":
-                switch (mnemnonic[1]){
-                    case "%A":
-                    case "%D":
                         return "000000010";
                     case "(%A) %D":
                     case "%D (%A)":
@@ -198,11 +198,6 @@ public class Code {
                 switch (instrucao) {
                     case "%A %D":
                     case "%D %A":
-                switch (mnemnonic[1]){
-                    case "(%A)":
-                        return "001000000";
-                    case "%D":
-                    case "%A":
                         return "000000000";
                     case "(%A) %D":
                     case "%D (%A)":
@@ -213,11 +208,6 @@ public class Code {
                 switch (instrucao) {
                     case "%A %D":
                     case "%D %A":
-                switch (mnemnonic[1]){
-                    case "(%A)":
-                        return "001010101";
-                    case "%D":
-                    case "%A":
                         return "000010101";
                     case "(%A) %D":
                     case "%D (%A)":
