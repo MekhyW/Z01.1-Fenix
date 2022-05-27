@@ -14,9 +14,27 @@
 
 function Main.main 0
 
-   
-label end
+pop temp 0
+pop temp 1
 
+label loop
+
+  push constant 0
+  push temp 1
+  eq
+  if-goto end
+  // se não, fazemos divisão
+  sub
+  push constant 1
+  pop temp 4
+  add
+
+  goto loop
+
+  // temp 1 é nulo
+label end
+  pop temp 4
+  push temp 3
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai

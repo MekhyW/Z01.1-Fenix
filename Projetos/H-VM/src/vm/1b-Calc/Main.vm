@@ -17,6 +17,20 @@
 
 function Main.main 0
 
+push constant 14
+push constant 2
+add
+// aqui só a primeira posição da pilha foi usada
+push constant 123
+// segunda usada
+push constant 1
+// terceira usada
+sub
+// faz 3 posição - 2 posição e salva na segunda
+sub
+// faz 2 posição - 1 posição
+pop temp 0
+
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai
