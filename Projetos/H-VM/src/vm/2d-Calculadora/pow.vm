@@ -1,1 +1,22 @@
-function pow 3
+function pow 2
+push argument 0
+pop local 0
+push argument 1
+pop local 1
+label LOOP_START
+push local 1
+push constant 1
+eq
+if-goto END
+push local 0
+push argument 1
+call mult 2
+pop local 0
+push local 1
+push constant 1
+sub
+pop local 1
+goto LOOP_START
+label END
+push local 0
+return
