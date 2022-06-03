@@ -1,1 +1,34 @@
 function pow 2
+    push argument 0
+    pop local 0
+    push argument 1
+    pop local 1
+    // local 1 será o contador da multiplicação
+    // em temp 0 será o valor de retorno
+    push constant 0
+    pop temp 0
+    label loop
+        // chamando os argumentos para a multiplicação
+        push argument 0
+        push argument 1
+        call mult 2
+        pop temp 1
+        // devemos somar com o valor de temp 0
+        push temp 0
+        push temp 1
+        add
+        pop temp 0
+        // decrementamos o local 1
+        push local 1
+        push constant 1
+        sub
+        pop local 1
+        // se local 1 for 0 paramos
+        push constant 0
+        push local 1
+        eq
+        if-goto end
+        goto loop
+label end
+push temp 0
+return
