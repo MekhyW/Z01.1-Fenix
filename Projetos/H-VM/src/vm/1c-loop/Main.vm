@@ -17,6 +17,29 @@
 
 function Main.main 0
 
+// em temp 0 teremos o valor do somador
+push constant 1
+pop temp 0
+
+// inicializando temp 3 em 0
+push constant 0
+pop temp 3
+
+label loop
+  push temp 3
+  push constant 55
+  eq
+  if-goto end // se temp 3 chega a 55, paramos
+
+  push temp 3
+  push temp 0
+  add
+  pop temp 3
+
+  // se não volta para o loop
+  goto loop
+
+label end
 
 
 // esse loop sempre deve existir!
