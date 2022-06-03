@@ -23,9 +23,24 @@
 // ---------------------------------
 
 function Main.main 0
-
-
-
+// faz o primeiro parenteses
+push constant 14
+push constant 2
+add
+// guarda a soma em temp 0
+pop temp 0
+// faz o segundo parenteses
+push constant 8
+push constant 1
+sub
+// guarda em temp 1
+pop temp 1
+// chama as temps para rodar a função
+push temp 0
+push temp 1
+call mult 2
+// guarda o valor de retorno
+pop temp 1
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai
