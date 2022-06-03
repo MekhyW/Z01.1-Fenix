@@ -16,7 +16,22 @@
 // ---------------------------------
 
 function Main.main 0
+//Para realizar está operação preciso:
+//  1.Push Constant em 14 + 2
+//  2.Add índice 0 e 1
+//  3.Push Constant em 123 - 1
+//  4.Sub índice 1 e 2
+//  5.Sub índice 0 e 1
 
+push constant 14      //14->[0]   SP->[1]
+push constant 2       //2->[1]    SP->[2]
+add                   //add->[0]  SP->[1]
+
+push constant 123     //123->[1]  SP->[2]
+push constant 1       //1->[2]    SP->[3]
+sub                   //sub->[1]  SP->[2]
+
+sub                   //sub->[0]  SP->[1]
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai

@@ -1,9 +1,9 @@
 function Main.main 0
-	push constant 7
-	push constant 2
-	add
-	push constant 3
-	call mult 2
+	push constant 7 			// 7 -> [0]   SP -> [1]
+	push constant 2				// 2 -> [1]   SP -> [2]
+	add							// 9 -> [0]   SP -> [1]
+	push constant 3 			// 3 -> [1]   SP -> [2]
+	call mult 2					// 9 <- [0]   3 <- [1]    SP <- [2]
 	label END
 	goto END
 

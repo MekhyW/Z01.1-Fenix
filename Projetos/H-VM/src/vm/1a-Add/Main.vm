@@ -9,6 +9,9 @@
 // ----------------------------------
 
 function Main.main 0
+push constant 123 //Adiciona Constante "123" para índice 0
+push constant 23 //Adiciona Constante "23" para índice 1
+add //Adiciona adição de índice 0 e 1 no índice 0 e posiciona SP -> índice 1
 
 
 // esse loop sempre deve existir!
