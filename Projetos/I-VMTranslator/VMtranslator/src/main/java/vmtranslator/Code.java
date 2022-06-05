@@ -137,15 +137,64 @@ public class Code {
                 commands.add("movw (%A), %A");
                 commands.add("movw %D, (%A)");
 
-
-
-
-
-
-
             } else if (segment.equals("argument")) {
+                // acessando o ponteiro
+                // altera stack pointer: SP = SP - 1
+                commands.add("leaw $0,%A");
+                commands.add("movw (%A),%D");
+                commands.add("decw %D");
+                commands.add("movw %D, (%A)");
+
+                commands.add("leaw $0, %A");
+                commands.add("movw (%A), %D"); // %A = 272
+                commands.add("leaw $"+(index)+", %A");
+
+                commands.add("movw %D, %A");
+                commands.add("movw (%A), %D");
+                commands.add("leaw $7, %A"); //salvando na ram temporária o valor da ram 272
+                commands.add("movw %D, (%A)");
+                // lendo o args
+                commands.add("leaw $2, %A");
+                commands.add("movw (%A), %D");
+                commands.add("leaw $"+index+", %A");
+                commands.add("addw %D,%A, %D");// 256
+                commands.add("leaw $8, %A");
+                commands.add("movw %D, (%A)"); // salvanda na ram temporária
+                //lendo as temporarias
+                commands.add("leaw $7, %A");
+                commands.add("movw (%A), %D");
+                commands.add("leaw $8, %A");
+                commands.add("movw (%A), %A");
+                commands.add("movw %D, (%A)");
 
             } else if (segment.equals("this")) {
+                // SP = SP - 1
+                commands.add("leaw $0,%A");
+                commands.add("movw (%A),%D");
+                commands.add("decw %D");
+                commands.add("movw %D, (%A)");
+                //salvando em D o valor de onde o ponteiro aponta
+                // commands.add("leaw $0, %A");
+                commands.add("movw (%A), %A");
+                commands.add("movw (%A), %D");
+                //salvando na ram temporária o valor de onde o ponteiro aponta
+                commands.add("leaw $7, %A"); 
+                commands.add("movw %D, (%A)");
+                //acessando o valor de this
+                commands.add("leaw $3, %A");
+                commands.add("movw (%A), %D");
+                //selecionando aonde that irá escrever
+                commands.add("leaw $" + index + ", %A");
+                commands.add("addw %D,%A, %D");
+                // salvanda na ram temporária
+                commands.add("leaw $8, %A");
+                commands.add("movw %D, (%A)"); 
+                //acessando valores temporários
+                commands.add("leaw $7, %A");
+                commands.add("movw (%A), %D");
+                commands.add("leaw $8, %A");
+                commands.add("movw (%A), %A");
+                commands.add("movw %D, (%A)");
 
             } else if (segment.equals("that")) {
                 // SP = SP - 1
@@ -183,6 +232,17 @@ public class Code {
 
 
             } else if (segment.equals("static")) {
+                // SP = SP - 1
+                commands.add("leaw $0,%A");
+                commands.add("movw (%A),%D");
+                commands.add("decw %D");
+                commands.add("movw %D, (%A)");
+                
+
+
+                
+                
+
 
             } else if (segment.equals("temp")) {
                 // SP = SP - 1

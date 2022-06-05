@@ -53,7 +53,51 @@ movw (%A),%D
 incw %D
 movw %D, (%A)
 ; 5 - POP argument 2
+leaw $0,%A
+movw (%A),%D
+decw %D
+movw %D, (%A)
+leaw $0, %A
+movw (%A), %D
+leaw $2, %A
+movw %D, %A
+movw (%A), %D
+leaw $7, %A
+movw %D, (%A)
+leaw $2, %A
+movw (%A), %D
+leaw $2, %A
+addw %D,%A, %D
+leaw $8, %A
+movw %D, (%A)
+leaw $7, %A
+movw (%A), %D
+leaw $8, %A
+movw (%A), %A
+movw %D, (%A)
 ; 6 - POP argument 1
+leaw $0,%A
+movw (%A),%D
+decw %D
+movw %D, (%A)
+leaw $0, %A
+movw (%A), %D
+leaw $1, %A
+movw %D, %A
+movw (%A), %D
+leaw $7, %A
+movw %D, (%A)
+leaw $2, %A
+movw (%A), %D
+leaw $1, %A
+addw %D,%A, %D
+leaw $8, %A
+movw %D, (%A)
+leaw $7, %A
+movw (%A), %D
+leaw $8, %A
+movw (%A), %A
+movw %D, (%A)
 ; 7 - PUSH constant 36
 leaw $36, %A
 movw %A, %D
@@ -65,6 +109,25 @@ movw (%A),%D
 incw %D
 movw %D, (%A)
 ; 8 - POP this 6
+leaw $0,%A
+movw (%A),%D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $7, %A
+movw %D, (%A)
+leaw $3, %A
+movw (%A), %D
+leaw $6, %A
+addw %D,%A, %D
+leaw $8, %A
+movw %D, (%A)
+leaw $7, %A
+movw (%A), %D
+leaw $8, %A
+movw (%A), %A
+movw %D, (%A)
 ; 9 - PUSH constant 42
 leaw $42, %A
 movw %A, %D
