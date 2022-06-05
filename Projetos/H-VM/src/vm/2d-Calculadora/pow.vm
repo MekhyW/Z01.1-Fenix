@@ -10,7 +10,7 @@ function pow 2
     label loop
         // chamando os argumentos para a multiplicação
         push argument 0
-        push argument 1
+        push argument 0
         call mult 2
         pop temp 1
         // devemos somar com o valor de temp 0
