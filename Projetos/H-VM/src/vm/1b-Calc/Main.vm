@@ -33,6 +33,8 @@ sub                   //sub->[1]  SP->[2]
 
 sub                   //sub->[0]  SP->[1]
 
+pop temp 0            //sub -> temp    SP<-[0]
+
 // esse loop sempre deve existir!
 // caso contrario o computador vai
 // executar lixo de memoria.
