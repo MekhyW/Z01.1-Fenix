@@ -237,6 +237,31 @@ public class Code {
                 commands.add("movw (%A),%D");
                 commands.add("decw %D");
                 commands.add("movw %D, (%A)");
+                // transfere para primeiro static ram16
+                commands.add("leaw $0,%A"); //ler 272
+                commands.add("movw (%A),%A"); //passa 272 para A
+                commands.add("movw (%A),%D"); // valor de que está em ram272
+                commands.add("leaw $15 ,%A");
+                commands.add("movw %A ,%D");
+                commands.add("leaw $7 ,%A");
+                commands.add("movw %D ,(%A)");
+                commands.add("LOOP"+index+":");
+                commands.add("leaw $7 ,%A");
+                commands.add("movw (%A) ,%D");
+                commands.add("incw %D");
+                commands.add("movw %D ,(%A)");
+                commands.add("leaw (%A) ,%A");
+                commands.add("movw (%A) ,%D");
+                commands.add("leaw $LOOP"+ index + ",%A");
+                commands.add("jne");
+                commands.add("nop");
+                commands.add("leaw $0 ,%A");
+                commands.add("movw (%A) ,%D");
+                commands.add("leaw $7 ,%A");
+                commands.add("leaw (%A) ,%A");
+                commands.add("movw %D ,(%A)");
+
+
                 
 
 

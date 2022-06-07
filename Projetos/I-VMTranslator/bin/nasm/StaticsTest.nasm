@@ -4,8 +4,60 @@ jmp
 nop
 ; 1 - PUSH argument 0
 ; 2 - POP static 0
+leaw $0,%A
+movw (%A),%D
+decw %D
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%A
+movw (%A),%D
+leaw $15 ,%A
+movw %A ,%D
+leaw $7 ,%A
+movw %D ,(%A)
+LOOP0:
+leaw $7 ,%A
+movw (%A) ,%D
+incw %D
+movw %D ,(%A)
+leaw (%A) ,%A
+movw (%A) ,%D
+leaw $LOOP0,%A
+jne
+nop
+leaw $0 ,%A
+movw (%A) ,%D
+leaw $7 ,%A
+leaw (%A) ,%A
+movw %D ,(%A)
 ; 3 - PUSH argument 1
 ; 4 - POP static 1
+leaw $0,%A
+movw (%A),%D
+decw %D
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%A
+movw (%A),%D
+leaw $15 ,%A
+movw %A ,%D
+leaw $7 ,%A
+movw %D ,(%A)
+LOOP1:
+leaw $7 ,%A
+movw (%A) ,%D
+incw %D
+movw %D ,(%A)
+leaw (%A) ,%A
+movw (%A) ,%D
+leaw $LOOP1,%A
+jne
+nop
+leaw $0 ,%A
+movw (%A) ,%D
+leaw $7 ,%A
+leaw (%A) ,%A
+movw %D ,(%A)
 ; 5 - PUSH constant 0
 leaw $0, %A
 movw %A, %D
@@ -81,8 +133,60 @@ leaw $5, %A
 movw %D, (%A)
 ; 25 - PUSH argument 0
 ; 26 - POP static 0
+leaw $0,%A
+movw (%A),%D
+decw %D
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%A
+movw (%A),%D
+leaw $15 ,%A
+movw %A ,%D
+leaw $7 ,%A
+movw %D ,(%A)
+LOOP0:
+leaw $7 ,%A
+movw (%A) ,%D
+incw %D
+movw %D ,(%A)
+leaw (%A) ,%A
+movw (%A) ,%D
+leaw $LOOP0,%A
+jne
+nop
+leaw $0 ,%A
+movw (%A) ,%D
+leaw $7 ,%A
+leaw (%A) ,%A
+movw %D ,(%A)
 ; 27 - PUSH argument 1
 ; 28 - POP static 1
+leaw $0,%A
+movw (%A),%D
+decw %D
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%A
+movw (%A),%D
+leaw $15 ,%A
+movw %A ,%D
+leaw $7 ,%A
+movw %D ,(%A)
+LOOP1:
+leaw $7 ,%A
+movw (%A) ,%D
+incw %D
+movw %D ,(%A)
+leaw (%A) ,%A
+movw (%A) ,%D
+leaw $LOOP1,%A
+jne
+nop
+leaw $0 ,%A
+movw (%A) ,%D
+leaw $7 ,%A
+leaw (%A) ,%A
+movw %D ,(%A)
 ; 29 - PUSH constant 0
 leaw $0, %A
 movw %A, %D
