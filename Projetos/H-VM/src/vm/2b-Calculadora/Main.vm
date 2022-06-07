@@ -22,11 +22,50 @@
 //  ****************************************************
 // ---------------------------------
 
+// Para resolver este exercício preciso:
+//  Parte1:
+//    1.Soma 14 + 2
+//    2.Subtração 8-1
+//  Parte2:
+//    1.Loop
+
+
 function Main.main 0
+push constant 14
+push constant 2
+add
+
+pop temp 0
+
+push constant 8
+push constant 1
+sub
+
+pop temp 1
 
 
-
-
+label loop
+  push temp 1 
+  pop local 0
+  push temp 2 
+  pop local 1
+  eq
+  if-goto end
+  push local 0
+  push argumento 0
+  add
+  pop local 0
+  push argument 0
+  add
+  pop local 0
+  push local 1
+  push constant 1
+  sub 
+  pop local 1
+  goto loop
+label end
+  push local 0
+  return
 // esse loop sempre deve existir!
 // caso contrario o computador vai
 // executar lixo de memoria.
