@@ -330,14 +330,6 @@ public class Code {
                 commands.add("leaw (%A) ,%A");
                 commands.add("movw %D ,(%A)");
 
-
-                
-
-
-                
-                
-
-
             } else if (segment.equals("temp")) {
                 // SP = SP - 1
                 commands.add("leaw $0,%A");
@@ -391,7 +383,7 @@ public class Code {
                 commands.add("incw %D");
                 commands.add("movw %D, (%A)");
             } else if (segment.equals("local")) {
-
+                commands.add("leaw $lcl, %A");            // Carrega Index de Local
 
             } else if (segment.equals("argument")) {
 
