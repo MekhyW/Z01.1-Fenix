@@ -45,24 +45,48 @@ public class Code {
 
         if(command.equals("add")) {
             commands.add(String.format("; %d - ADD", lineCode++));
-            commands.add("leaw $0, %A");
+            commands.add("leaw $0, %A"); // SP OU R0 para ler o stacker pointer
             commands.add("movw (%A), %A");
             commands.add("decw %A");
             commands.add("movw (%A), %D");
             commands.add("decw %A");
             commands.add("addw (%A), %D, %D");
             commands.add("movw %D, (%A)");
-            //commands.add("addw $1, %A, %D");
-            //commands.add("leaw $0, %A");
-            //commands.add("movw %D, (%A)");
+            commands.add("addw $1, %A, %D");
+            commands.add("leaw $0, %A");
+            commands.add("movw %D, (%A)");
 
         } else if (command.equals("sub")) {
             commands.add(String.format("; %d - SUB", lineCode++));
-            // IMPLEMENTAR AQUI O LAB
             // LEMBRAR DE USAR A FUNÇÃO commands.add()!
+            commands.add("leaw $SP, %A"); // aponta para o SP
+            commands.add("movw (%A), %A"); // Move ram0 para regA
+            commands.add("decw %A");  // decrementa reg A (SP passa a ser o anterior)
+            commands.add("movw (%A), %D"); // EM %D TEMOS o valor da pilha n-1
+            commands.add("decw %A"); // regA agora aponta para a pilha n-2
+            // VAMOS REALIZAR A SUBTRAÇÃO AGR
+            commands.add("subw (%A), %D, %D"); // faz SP[N-2] - SP[N-1] e salva em %D
+            // NA Pilha n-2 precisamos atualizar o valor com o encontrado
+            commands.add("movw %D, (%A)"); // faz SP[N-1] receber o valor da subtraçaõ
+            // AGORA VAMOS ATUALIZAR O SP
+            commands.add("addw %A, $1, %D"); // %D = SP + 1
+            commands.add("leaw $0, %A");
+            commands.add("movw %D, (%A)");
+
         } else if (command.equals("neg")) {
             commands.add(String.format("; %d - NEG", lineCode++));
-
+            commands.add("leaw $SP, %A"); // aponta para p SP
+            commands.add("subw (%A), $1, %A"); // decrementa ram[SP] em 1 e salva em %A
+            // isso quer dizer que o SP volta uma posição
+            commands.add("movw (%A), %D");
+            // AGORA %D = SP[N-1]
+            commands.add("negw %D");
+            commands.add("movw %D, (%A)");
+            // AGORA a ram anterior recebe o valor da negação
+            // precisamos increver o SP
+            commands.add("addw %A, $1, %D"); // %D = SP + 1
+            commands.add("leaw $0, %A");
+            commands.add("movw %D, (%A)");
         } else if (command.equals("eq")) {
             commands.add(String.format("; %d - EQ", lineCode++));
 
@@ -74,12 +98,45 @@ public class Code {
 
         } else if (command.equals("and")) {
             commands.add(String.format("; %d - AND", lineCode++));
+            commands.add("leaw $SP, %A");
+            commands.add("subw (%A), $1, %A");
+            // AGORA ESTAMOS no N-1
+            commands.add("movw (%A), %D");
+            // EM %D TEMOS a informação de N-1
+            commands.add(("decw %A"));
+            // AGORA estamos apontando para N-2
+            commands.add("andw (%A), %D, %D");
+            // em %D temos o resultado do and
+            commands.add("movw %D, (%A)");
+            commands.add("addw %A, $1, %D"); // %D = SP + 1
+            commands.add("leaw $0, %A");
+            commands.add("movw %D, (%A)");
 
         } else if (command.equals("or")) {
             commands.add(String.format("; %d - OR", lineCode++));
+            commands.add("leaw $SP, %A");
+            commands.add("subw (%A), $1, %A");
+            // AGORA ESTAMOS no N-1
+            commands.add("movw (%A), %D");
+            // EM %D TEMOS a informação de N-1
+            commands.add(("decw %A"));
+            // AGORA estamos apontando para N-2
+            commands.add("orw (%A), %D, %D");
+            // em %D temos o resultado do or
+            commands.add("movw %D, (%A)");
+            commands.add("addw %A, $1, %D"); // %D = SP + 1
+            commands.add("leaw $0, %A");
+            commands.add("movw %D, (%A)");
 
         } else if (command.equals("not")) {
-
+            commands.add("leaw $SP, %A");
+            commands.add("subw (%A), $1, %A");
+            commands.add("movw (%A), %D");
+            commands.add("notw %D");
+            commands.add("movw %D, (%A)");
+            commands.add("addw %A, $1, %D"); // %D = SP + 1
+            commands.add("leaw $0, %A");
+            commands.add("movw %D, (%A)");
         }
 
         String[] stringArray = new String[ commands.size() ];
