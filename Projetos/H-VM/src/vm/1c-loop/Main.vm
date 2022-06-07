@@ -16,7 +16,27 @@
 // ----------------------------------
 
 function Main.main 0
+push constant 54
+pop temp 0
+push constant 1
+pop temp 1
+push constant 1
+pop temp 2
+push constant 0
+pop temp 3
 
+label loop
+  push temp 1
+  push temp 2
+  add
+
+  pop temp 3
+
+  push temp 1
+
+  lt
+  if goto end
+  goto loop
 
 
 // esse loop sempre deve existir!
