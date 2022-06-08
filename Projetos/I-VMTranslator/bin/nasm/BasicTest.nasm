@@ -9,6 +9,19 @@ movw (%A),%D
 incw %D
 movw %D, (%A)
 ; 1 - PUSH local 0
+leaw $(0), %A
+movw %A, %D
+leaw $1, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 2 - POP local 0
 leaw $0,%A
 movw (%A),%D
@@ -209,7 +222,33 @@ movw (%A), %D
 leaw $11, %A
 movw %D, (%A)
 ; 15 - PUSH local 0
+leaw $(0), %A
+movw %A, %D
+leaw $1, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 16 - PUSH that 5
+leaw $(5), %A
+movw %A, %D
+leaw $4, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 17 - ADD
 leaw $0, %A
 movw (%A), %A
@@ -218,10 +257,62 @@ movw (%A), %D
 decw %A
 addw (%A), %D, %D
 movw %D, (%A)
+addw $1, %A, %D
+leaw $0, %A
+movw %D, (%A)
 ; 18 - PUSH argument 1
+leaw $(1), %A
+movw %A, %D
+leaw $2, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 19 - SUB
+leaw $SP, %A
+movw (%A), %A
+decw %A
+movw (%A), %D
+decw %A
+subw (%A), %D, %D
+movw %D, (%A)
+addw %A, $1, %D
+leaw $0, %A
+movw %D, (%A)
 ; 20 - PUSH this 6
+leaw $(6), %A
+movw %A, %D
+leaw $3, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 21 - PUSH this 6
+leaw $(6), %A
+movw %A, %D
+leaw $3, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 22 - ADD
 leaw $0, %A
 movw (%A), %A
@@ -230,8 +321,30 @@ movw (%A), %D
 decw %A
 addw (%A), %D, %D
 movw %D, (%A)
+addw $1, %A, %D
+leaw $0, %A
+movw %D, (%A)
 ; 23 - SUB
+leaw $SP, %A
+movw (%A), %A
+decw %A
+movw (%A), %D
+decw %A
+subw (%A), %D, %D
+movw %D, (%A)
+addw %A, $1, %D
+leaw $0, %A
+movw %D, (%A)
 ; 24 - PUSH temp 6
+leaw $11, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 25 - ADD
 leaw $0, %A
 movw (%A), %A
@@ -239,5 +352,8 @@ decw %A
 movw (%A), %D
 decw %A
 addw (%A), %D, %D
+movw %D, (%A)
+addw $1, %A, %D
+leaw $0, %A
 movw %D, (%A)
 ; End

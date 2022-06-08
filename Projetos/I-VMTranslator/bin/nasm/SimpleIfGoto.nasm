@@ -29,6 +29,22 @@ movw (%A),%D
 incw %D
 movw %D, (%A)
 ; 3 - EQ
+leaw $SP, %A
+subw (%A), $1, %D
+movw %D, %A, (%A)
+movw (%A), %D
+decw %A
+subw %D, (%A), %D
+movw $0, (%A)
+leaw $END, %A
+jne %D
+nop
+leaw $SP, %A
+subw (%A), $1, %A
+movw $0, %D
+not %D
+movw %D, (%A)
+END:
 ; 5 - PUSH constant 3
 leaw $3, %A
 movw %A, %D
@@ -70,6 +86,22 @@ movw (%A),%D
 incw %D
 movw %D, (%A)
 ; 9 - EQ
+leaw $SP, %A
+subw (%A), $1, %D
+movw %D, %A, (%A)
+movw (%A), %D
+decw %A
+subw %D, (%A), %D
+movw $0, (%A)
+leaw $END, %A
+jne %D
+nop
+leaw $SP, %A
+subw (%A), $1, %A
+movw $0, %D
+not %D
+movw %D, (%A)
+END:
 ; 11 - PUSH constant 2
 leaw $2, %A
 movw %A, %D

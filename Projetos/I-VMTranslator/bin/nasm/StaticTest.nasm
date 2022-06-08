@@ -110,9 +110,46 @@ leaw $7 ,%A
 leaw (%A) ,%A
 movw %D ,(%A)
 ; 6 - PUSH static 3
+leaw $3, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 7 - PUSH static 1
+leaw $1, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 8 - SUB
+leaw $SP, %A
+movw (%A), %A
+decw %A
+movw (%A), %D
+decw %A
+subw (%A), %D, %D
+movw %D, (%A)
+addw %A, $1, %D
+leaw $0, %A
+movw %D, (%A)
 ; 9 - PUSH static 8
+leaw $8, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 10 - ADD
 leaw $0, %A
 movw (%A), %A
@@ -120,5 +157,8 @@ decw %A
 movw (%A), %D
 decw %A
 addw (%A), %D, %D
+movw %D, (%A)
+addw $1, %A, %D
+leaw $0, %A
 movw %D, (%A)
 ; End
