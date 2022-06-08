@@ -1,0 +1,5 @@
+function dec 1
+push argument 0
+push constant 1
+sub
+return 
