@@ -367,6 +367,7 @@ public class Code {
             commands.add(String.format("; %d - PUSH %s %d", lineCode++ ,segment, index));
             
             switch (segment) {
+                
                 case "constant":
                     // carrega a constant em %A e move para %D
                     commands.add("leaw $"+ index + ", %A");
@@ -378,7 +379,7 @@ public class Code {
                     commands.add("movw %D,(%A)");
                     break;
                 case "local":
-                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("leaw $"+ index.toString() +", %A");
                     commands.add("movw %A, %D");
                     commands.add("leaw $1, %A");
                     commands.add("movw (%A), %A");
@@ -389,7 +390,7 @@ public class Code {
                     commands.add("movw %D, (%A)");
                     break;
                 case "argument":
-                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("leaw $"+ index.toString() +", %A");
                     commands.add("movw %A, %D");
                     commands.add("leaw $2, %A");
                     commands.add("movw (%A), %A");
@@ -400,7 +401,7 @@ public class Code {
                     commands.add("movw %D, (%A)");
                     break;
                 case "this":
-                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("leaw $"+ index.toString() +", %A");
                     commands.add("movw %A, %D");
                     commands.add("leaw $3, %A");
                     commands.add("movw (%A), %A");
@@ -411,7 +412,7 @@ public class Code {
                     commands.add("movw %D, (%A)");
                     break;
                 case "that":
-                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("leaw $"+ index.toString() +", %A");
                     commands.add("movw %A, %D");
                     commands.add("leaw $4, %A");
                     commands.add("movw (%A), %A");
