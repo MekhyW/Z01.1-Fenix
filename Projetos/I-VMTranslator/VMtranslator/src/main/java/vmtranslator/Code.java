@@ -212,6 +212,7 @@ public class Code {
         commands.add(String.format("; %d - Goto Incondicional", lineCode++));
         commands.add("leaw"+label+", %A");
         commands.add("jmp");
+        commands.add("nop");
 
     }
 
@@ -224,6 +225,12 @@ public class Code {
 
         List<String> commands = new ArrayList<String>();
         commands.add(String.format("; %d - Goto Condicional", lineCode++));
+        commands.add("leaw $0, %A");
+        commands.add("movw (%A), %A");
+        commands.add("movw (%A), %D");
+        commands.add("leaw "+label+", %A");
+        commands.add("jg %D");
+        commands.add("nop");
 
      }
 
