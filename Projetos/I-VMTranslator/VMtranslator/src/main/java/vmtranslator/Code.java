@@ -234,7 +234,55 @@ public class Code {
 
         List<String> commands = new ArrayList<String>();
         commands.add(String.format("; %d - chamada de funcao %s", lineCode++, functionName));
-
+        // Rotina para Salvar SP, LCL, ARG, THIS e THAT
+        commands.add("leaw $SP, %A");
+        commands.add("movw %A, %D");
+        commands.add("addw %D, $1, %A, (%A)");
+        // Adiciona LCL
+        commands.add("leaw $LCL, %A");
+        commands.add("movw (%A), %D");
+        commands.add("leaw $SP, %A");
+        commands.add("addw (%A), $1, %A");
+        commands.add("movw %D, (%A)");
+        commands.add("movw %A, %D");
+        commands.add("leaw $SP, %A");
+        commands.add("movw %D, (%A)");
+        // Adiciona ARG
+        commands.add("leaw $ARG, %A");
+        commands.add("movw (%A), %D");
+        commands.add("leaw $SP, %A");
+        commands.add("addw (%A), $1, %A");
+        commands.add("movw %D, (%A)");
+        commands.add("movw %A, %D");
+        commands.add("leaw $SP, %A");
+        commands.add("movw %D, (%A)");
+        // Adiciona This
+        commands.add("leaw $THIS, %A");
+        commands.add("movw (%A), %D");
+        commands.add("leaw $SP, %A");
+        commands.add("addw (%A), $1, %A");
+        commands.add("movw %D, (%A)");
+        commands.add("movw %A, %D");
+        commands.add("leaw $SP, %A");
+        commands.add("movw %D, (%A)");
+        // Adiciona That
+        commands.add("leaw $THAT, %A");
+        commands.add("movw (%A), %D");
+        commands.add("leaw $SP, %A");
+        commands.add("addw (%A), $1, %A");
+        commands.add("movw %D, (%A)");
+        commands.add("movw %A, %D");
+        commands.add("leaw $SP, %A");
+        commands.add("movw %D, (%A)");
+        // Adiciona FunctionName
+        commands.add("leaw $"+functionName+", %A");
+        commands.add("movw (%A), %D");
+        commands.add("leaw $SP, %A");
+        commands.add("addw (%A), $1, %A");
+        commands.add("movw %D, (%A)");
+        commands.add("movw %A, %D");
+        commands.add("leaw $SP, %A");
+        commands.add("movw %D, (%A)");
     }
 
     /**
