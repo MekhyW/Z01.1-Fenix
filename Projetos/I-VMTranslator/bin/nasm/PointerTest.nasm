@@ -99,7 +99,15 @@ leaw $8, %A
 movw (%A), %A
 movw %D, (%A)
 ; 8 - PUSH pointer 0
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 9 - PUSH pointer 1
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 10 - ADD
 leaw $0, %A
 movw (%A), %A
@@ -108,9 +116,48 @@ movw (%A), %D
 decw %A
 addw (%A), %D, %D
 movw %D, (%A)
+addw $1, %A, %D
+leaw $0, %A
+movw %D, (%A)
 ; 11 - PUSH this 2
+leaw $(2), %A
+movw %A, %D
+leaw $3, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 12 - SUB
+leaw $SP, %A
+movw (%A), %A
+decw %A
+movw (%A), %D
+decw %A
+subw (%A), %D, %D
+movw %D, (%A)
+addw %A, $1, %D
+leaw $0, %A
+movw %D, (%A)
 ; 13 - PUSH that 6
+leaw $(6), %A
+movw %A, %D
+leaw $4, %A
+movw (%A), %A
+addw %D, %A, %A
+movw (%A), %D
+leaw $0, %A
+movw (%A),%A
+movw %D, (%A)
+leaw $0,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
 ; 14 - ADD
 leaw $0, %A
 movw (%A), %A
@@ -118,5 +165,8 @@ decw %A
 movw (%A), %D
 decw %A
 addw (%A), %D, %D
+movw %D, (%A)
+addw $1, %A, %D
+leaw $0, %A
 movw %D, (%A)
 ; End
