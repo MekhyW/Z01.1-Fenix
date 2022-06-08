@@ -378,36 +378,44 @@ public class Code {
                     commands.add("movw %D,(%A)");
                     break;
                 case "local":
+                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("movw %A, %D");
                     commands.add("leaw $1, %A");
                     commands.add("movw (%A), %A");
-                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("addw %D, %A, %A");
                     commands.add("movw (%A), %D");
                     commands.add("leaw $0, %A");
                     commands.add("movw (%A),%A");
                     commands.add("movw %D, (%A)");
                     break;
                 case "argument":
+                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("movw %A, %D");
                     commands.add("leaw $2, %A");
                     commands.add("movw (%A), %A");
-                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("addw %D, %A, %A");
                     commands.add("movw (%A), %D");
                     commands.add("leaw $0, %A");
                     commands.add("movw (%A),%A");
                     commands.add("movw %D, (%A)");
                     break;
                 case "this":
+                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("movw %A, %D");
                     commands.add("leaw $3, %A");
                     commands.add("movw (%A), %A");
-                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("addw %D, %A, %A");
                     commands.add("movw (%A), %D");
                     commands.add("leaw $0, %A");
                     commands.add("movw (%A),%A");
                     commands.add("movw %D, (%A)");
                     break;
                 case "that":
+                    commands.add("leaw $("+ index +"), %A");
+                    commands.add("movw %A, %D");
                     commands.add("leaw $4, %A");
                     commands.add("movw (%A), %A");
-                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("addw %D, %A, %A");
                     commands.add("movw (%A), %D");
                     commands.add("leaw $0, %A");
                     commands.add("movw (%A),%A");
