@@ -91,61 +91,74 @@ public class Code {
             commands.add(String.format("; %d - EQ", lineCode++));
             commands.add("leaw $SP, %A");           // Aponta para SP (303)
             commands.add("subw (%A), $1, %D");      // Carrega Endereço de SP -1
-            commands.add("movw %D, %A, (%A)");      // Move %D para %A e (%A), em conjunto o SP se torna 302
+            commands.add("movw %D, %A");      // Move %D para %A e (%A), em conjunto o SP se torna 302
             commands.add("movw (%A), %D");          // Move Valor de %A para %D
             commands.add("decw %A");                // Diminui 1, (302-1)
             commands.add("subw %D, (%A), %D");      // Compara X - Y, e guarda resultado em %D
             commands.add("movw $0, (%A)");          // Move 0 para indicador do SP
-            commands.add("leaw $END, %A");          // Carrega END em %A
+            commands.add("leaw $corrigeSP, %A");          // Carrega END em %A
             commands.add("jne %D");                 // JUMP JNE (Diferente de Zero)
             commands.add("nop");
             // Se Jump for diferente de zero, a função não continuará, e o Jump será realizado
             commands.add("leaw $SP, %A");           // Carrega Pointer SP
             commands.add("subw (%A), $1, %A");      // Subtrai SP-1, e guarda em %A
+            commands.add("subw %A, $1, %A");
             commands.add("movw $0, %D");            // Move valor de 0 para %D
-            commands.add("not %D");                 // Transforma valor de False em True
+            commands.add("notw %D");                 // Transforma valor de False em True
             commands.add("movw %D, (%A)");          // Move Valor de True para (%A), indicando que X = Y
-            commands.add("END:");
+            commands.add("corrigeSP:");
+            commands.add("leaw $SP, %A");
+            commands.add("subw (%A), $1, %D");
+            commands.add("movw %D, (%A)");
 
         } else if (command.equals("gt")) {
             commands.add(String.format("; %d - EQ", lineCode++));
             commands.add("leaw $SP, %A");           // Aponta para SP (303)
             commands.add("subw (%A), $1, %D");      // Carrega Endereço de SP -1
-            commands.add("movw %D, %A, (%A)");      // Move %D para %A e (%A), em conjunto o SP se torna 302
+            commands.add("movw %D, %A");      // Move %D para %A e (%A), em conjunto o SP se torna 302
             commands.add("movw (%A), %D");          // Move Valor de %A para %D
             commands.add("decw %A");                // Diminui 1, (302-1)
-            commands.add("subw %D, (%A), %D");      // Compara X - Y, e guarda resultado em %D
+            commands.add("subw (%A), %D, %D");      // Compara X - Y, e guarda resultado em %D
             commands.add("movw $0, (%A)");          // Move 0 para indicador do SP
-            commands.add("leaw $END, %A");          // Carrega END em %A
+            commands.add("leaw $corrigeSP, %A");          // Carrega END em %A
             commands.add("jle %D");                 // JUMP JNE (Diferente de Zero)
             commands.add("nop");
             // Se Jump for diferente de zero, a função não continuará, e o Jump será realizado
             commands.add("leaw $SP, %A");           // Carrega Pointer SP
             commands.add("subw (%A), $1, %A");      // Subtrai SP-1, e guarda em %A
+            commands.add("subw %A, $1, %A");
             commands.add("movw $0, %D");            // Move valor de 0 para %D
-            commands.add("not %D");                 // Transforma valor de False em True
+            commands.add("notw %D");                 // Transforma valor de False em True
             commands.add("movw %D, (%A)");          // Move Valor de True para (%A), indicando que X = Y
-            commands.add("END:");                   // Checa se %D é maior que zero
+            commands.add("corrigeSP:");
+            commands.add("leaw $SP, %A");
+            commands.add("subw (%A), $1, %D");
+            commands.add("movw %D, (%A)");                // Checa se %D é maior que zero
 
         } else if (command.equals("lt")) {
             commands.add(String.format("; %d - EQ", lineCode++));
+            commands.add(String.format("; %d - EQ", lineCode++));
             commands.add("leaw $SP, %A");           // Aponta para SP (303)
             commands.add("subw (%A), $1, %D");      // Carrega Endereço de SP -1
-            commands.add("movw %D, %A, (%A)");      // Move %D para %A e (%A), em conjunto o SP se torna 302
+            commands.add("movw %D, %A");      // Move %D para %A e (%A), em conjunto o SP se torna 302
             commands.add("movw (%A), %D");          // Move Valor de %A para %D
             commands.add("decw %A");                // Diminui 1, (302-1)
             commands.add("subw %D, (%A), %D");      // Compara X - Y, e guarda resultado em %D
             commands.add("movw $0, (%A)");          // Move 0 para indicador do SP
-            commands.add("leaw $END, %A");          // Carrega END em %A
+            commands.add("leaw $corrigeSP, %A");          // Carrega END em %A
             commands.add("jge %D");                 // JUMP JNE (Diferente de Zero)
             commands.add("nop");
             // Se Jump for diferente de zero, a função não continuará, e o Jump será realizado
             commands.add("leaw $SP, %A");           // Carrega Pointer SP
             commands.add("subw (%A), $1, %A");      // Subtrai SP-1, e guarda em %A
+            commands.add("subw %A, $1, %A");
             commands.add("movw $0, %D");            // Move valor de 0 para %D
-            commands.add("not %D");                 // Transforma valor de False em True
+            commands.add("notw %D");                 // Transforma valor de False em True
             commands.add("movw %D, (%A)");          // Move Valor de True para (%A), indicando que X = Y
-            commands.add("END:");                   // Checa se %D é maior que zero
+            commands.add("corrigeSP:");
+            commands.add("leaw $SP, %A");
+            commands.add("subw (%A), $1, %D");
+            commands.add("movw %D, (%A)");                 // Checa se %D é maior que zero
 
         } else if (command.equals("and")) {
             commands.add(String.format("; %d - AND", lineCode++));
