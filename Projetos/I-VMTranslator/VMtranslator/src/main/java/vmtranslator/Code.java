@@ -213,230 +213,230 @@ public class Code {
         if(command == Parser.CommandType.C_POP) {
             commands.add(String.format("; %d - POP %s %d", lineCode++ ,segment, index));
 
-            if (segment.equals("constant")) {
-                Error.error("Não faz sentido POP com constant");
-            } else if (segment.equals("local")) { //  pop local 0 
-                // acessando o ponteiro
-                // altera stack pointer: SP = SP - 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("decw %D");
-                commands.add("movw %D, (%A)");
-
-                commands.add("leaw $0, %A");
-                commands.add("movw (%A), %D"); // %A = 272
-                commands.add("leaw $"+(index)+", %A");
-
-                commands.add("movw %D, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $7, %A"); //salvando na ram temporária o valor da ram 272
-                commands.add("movw %D, (%A)");
-                // lendo o local
-                commands.add("leaw $1, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $"+index+", %A");
-                commands.add("addw %D,%A, %D");// 256
-                commands.add("leaw $8, %A");
-                commands.add("movw %D, (%A)"); // salvanda na ram temporária
-                //lendo as temporarias
-                commands.add("leaw $7, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $8, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw %D, (%A)");
-
-            } else if (segment.equals("argument")) {
-                // acessando o ponteiro
-                // altera stack pointer: SP = SP - 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("decw %D");
-                commands.add("movw %D, (%A)");
-
-                commands.add("leaw $0, %A");
-                commands.add("movw (%A), %D"); // %A = 272
-                commands.add("leaw $"+(index)+", %A");
-
-                commands.add("movw %D, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $7, %A"); //salvando na ram temporária o valor da ram 272
-                commands.add("movw %D, (%A)");
-                // lendo o args
-                commands.add("leaw $2, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $"+index+", %A");
-                commands.add("addw %D,%A, %D");// 256
-                commands.add("leaw $8, %A");
-                commands.add("movw %D, (%A)"); // salvanda na ram temporária
-                //lendo as temporarias
-                commands.add("leaw $7, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $8, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw %D, (%A)");
-
-            } else if (segment.equals("this")) {
-                // SP = SP - 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("decw %D");
-                commands.add("movw %D, (%A)");
-                //salvando em D o valor de onde o ponteiro aponta
-                // commands.add("leaw $0, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw (%A), %D");
-                //salvando na ram temporária o valor de onde o ponteiro aponta
-                commands.add("leaw $7, %A"); 
-                commands.add("movw %D, (%A)");
-                //acessando o valor de this
-                commands.add("leaw $3, %A");
-                commands.add("movw (%A), %D");
-                //selecionando aonde that irá escrever
-                commands.add("leaw $" + index + ", %A");
-                commands.add("addw %D,%A, %D");
-                // salvanda na ram temporária
-                commands.add("leaw $8, %A");
-                commands.add("movw %D, (%A)"); 
-                //acessando valores temporários
-                commands.add("leaw $7, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $8, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw %D, (%A)");
-
-            } else if (segment.equals("that")) {
-                // SP = SP - 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("decw %D");
-                commands.add("movw %D, (%A)");
-                //salvando em D o valor de onde o ponteiro aponta
-                // commands.add("leaw $0, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw (%A), %D");
-                //salvando na ram temporária o valor de onde o ponteiro aponta
-                commands.add("leaw $7, %A"); 
-                commands.add("movw %D, (%A)");
-                //acessando o valor de that
-                commands.add("leaw $4, %A");
-                commands.add("movw (%A), %D");
-                //selecionando aonde that irá escrever
-                commands.add("leaw $" + index + ", %A");
-                commands.add("addw %D,%A, %D");
-                // salvanda na ram temporária
-                commands.add("leaw $8, %A");
-                commands.add("movw %D, (%A)"); 
-                //acessando valores temporários
-                commands.add("leaw $7, %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $8, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw %D, (%A)");
-
-            } else if (segment.equals("static")) {
-                // SP = SP - 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("decw %D");
-                commands.add("movw %D, (%A)");
-                // transfere para primeiro static ram16
-                commands.add("leaw $0,%A"); //ler 272
-                commands.add("movw (%A),%A"); //passa 272 para A
-                commands.add("movw (%A),%D"); // valor de que está em ram272
-                commands.add("leaw $15 ,%A");
-                commands.add("movw %A ,%D");
-                commands.add("leaw $7 ,%A");
-                commands.add("movw %D ,(%A)");
-                commands.add("LOOP"+index+":");
-                commands.add("leaw $7 ,%A");
-                commands.add("movw (%A) ,%D");
-                commands.add("incw %D");
-                commands.add("movw %D ,(%A)");
-                commands.add("leaw (%A) ,%A");
-                commands.add("movw (%A) ,%D");
-                commands.add("leaw $LOOP"+ index + ",%A");
-                commands.add("jne");
-                commands.add("nop");
-                commands.add("leaw $0 ,%A");
-                commands.add("movw (%A) ,%D");
-                commands.add("leaw $7 ,%A");
-                commands.add("leaw (%A) ,%A");
-                commands.add("movw %D ,(%A)");
-
-            } else if (segment.equals("temp")) {
-                // SP = SP - 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("decw %D");
-                commands.add("movw %D, (%A)");
-                //salvando em D para onde o ponteiro aponta
-                commands.add("leaw $0, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw (%A), %D");
-                commands.add("leaw $"+(5+index)+", %A");
-                commands.add("movw %D, (%A)");
-                
-
-
-            } else if (segment.equals("pointer")) {
-                // SP = SP - 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("decw %D");
-                commands.add("movw %D, (%A)");
-                //lendo para onde o ponteiro aponta
-                commands.add("leaw $0, %A");
-                commands.add("movw (%A), %A");
-                commands.add("movw (%A), %D");
-                
-                if(index==0) {
+            // acessando o ponteiro
+            // altera stack pointer: SP = SP - 1
+            commands.add("leaw $0,%A");
+            commands.add("movw (%A),%D");
+            commands.add("decw %D");
+            commands.add("movw %D, (%A)");
+            switch(segment) {
+                case "constant":
+                    Error.error("Não faz sentido POP com constant");
+                    break;
+                case "local":
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A), %D"); // %A = 272
+                    commands.add("leaw $"+(index)+", %A");
+                    commands.add("movw %D, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $7, %A"); //salvando na ram temporária o valor da ram 272
+                    commands.add("movw %D, (%A)");
+                    // lendo o local
+                    commands.add("leaw $1, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $"+index+", %A");
+                    commands.add("addw %D,%A, %D");// 256
+                    commands.add("leaw $8, %A");
+                    commands.add("movw %D, (%A)"); // salvanda na ram temporária
+                    //lendo as temporarias
+                    commands.add("leaw $7, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $8, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "argument":
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A), %D"); // %A = 272
+                    commands.add("leaw $"+(index)+", %A");
+                    commands.add("movw %D, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $7, %A"); //salvando na ram temporária o valor da ram 272
+                    commands.add("movw %D, (%A)");
+                    // lendo o args
+                    commands.add("leaw $2, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $"+index+", %A");
+                    commands.add("addw %D,%A, %D");// 256
+                    commands.add("leaw $8, %A");
+                    commands.add("movw %D, (%A)"); // salvanda na ram temporária
+                    //lendo as temporarias
+                    commands.add("leaw $7, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $8, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "this":
+                    //salvando em D o valor de onde o ponteiro aponta
+                    // commands.add("leaw $0, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("movw (%A), %D");
+                    //salvando na ram temporária o valor de onde o ponteiro aponta
+                    commands.add("leaw $7, %A"); 
+                    commands.add("movw %D, (%A)");
+                    //acessando o valor de this
                     commands.add("leaw $3, %A");
+                    commands.add("movw (%A), %D");
+                    //selecionando aonde that irá escrever
+                    commands.add("leaw $" + index + ", %A");
+                    commands.add("addw %D,%A, %D");
+                    // salvanda na ram temporária
+                    commands.add("leaw $8, %A");
+                    commands.add("movw %D, (%A)"); 
+                    //acessando valores temporários
+                    commands.add("leaw $7, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $8, %A");
+                    commands.add("movw (%A), %A");
                     commands.add("movw %D, (%A)");
-                } else {
+                    break;
+                case "that":
+                    //salvando em D o valor de onde o ponteiro aponta
+                    // commands.add("leaw $0, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("movw (%A), %D");
+                    //salvando na ram temporária o valor de onde o ponteiro aponta
+                    commands.add("leaw $7, %A"); 
+                    commands.add("movw %D, (%A)");
+                    //acessando o valor de that
                     commands.add("leaw $4, %A");
+                    commands.add("movw (%A), %D");
+                    //selecionando aonde that irá escrever
+                    commands.add("leaw $" + index + ", %A");
+                    commands.add("addw %D,%A, %D");
+                    // salvanda na ram temporária
+                    commands.add("leaw $8, %A");
+                    commands.add("movw %D, (%A)"); 
+                    //acessando valores temporários
+                    commands.add("leaw $7, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $8, %A");
+                    commands.add("movw (%A), %A");
                     commands.add("movw %D, (%A)");
-
-                }
+                    break;
+                case "static":
+                    // transfere para primeiro static ram16
+                    commands.add("leaw $0,%A"); //ler 272
+                    commands.add("movw (%A),%A"); //passa 272 para A
+                    commands.add("movw (%A),%D"); // valor de que está em ram272
+                    commands.add("leaw $15 ,%A");
+                    commands.add("movw %A ,%D");
+                    commands.add("leaw $7 ,%A");
+                    commands.add("movw %D ,(%A)");
+                    commands.add("LOOP"+index+":");
+                    commands.add("leaw $7 ,%A");
+                    commands.add("movw (%A) ,%D");
+                    commands.add("incw %D");
+                    commands.add("movw %D ,(%A)");
+                    commands.add("leaw (%A) ,%A");
+                    commands.add("movw (%A) ,%D");
+                    commands.add("leaw $LOOP"+ index + ",%A");
+                    commands.add("jne");
+                    commands.add("nop");
+                    commands.add("leaw $0 ,%A");
+                    commands.add("movw (%A) ,%D");
+                    commands.add("leaw $7 ,%A");
+                    commands.add("leaw (%A) ,%A");
+                    commands.add("movw %D ,(%A)");
+                    break;
+                case "temp":
+                    //salvando em D para onde o ponteiro aponta
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $"+(5+index)+", %A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "pointer":
+                    //lendo para onde o ponteiro aponta
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("movw (%A), %D");
+                    if(index==0) {
+                        commands.add("leaw $3, %A");
+                        commands.add("movw %D, (%A)");
+                    } else {
+                        commands.add("leaw $4, %A");
+                        commands.add("movw %D, (%A)");
+                    }
+                    break;
             }
+
         } else if (command == Parser.CommandType.C_PUSH) {
             commands.add(String.format("; %d - PUSH %s %d", lineCode++ ,segment, index));
-
-            if (segment.equals("constant")) {
-                // carrega a constant em %A e move para %D
-                commands.add("leaw $"+ index + ", %A");
-                commands.add("movw %A, %D");
-                // carrega o calor do SP e move a constant
-                // para o topo da pilha
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%A");
-                commands.add("movw %D,(%A)");
-                // altera stack pointer: SP = SP + 1
-                commands.add("leaw $0,%A");
-                commands.add("movw (%A),%D");
-                commands.add("incw %D");
-                commands.add("movw %D, (%A)");
-            } else if (segment.equals("local")) {
-                commands.add("leaw $lcl, %A");            // Carrega Index de Local
-
-            } else if (segment.equals("argument")) {
-
-            } else if (segment.equals("this")) {
-
-            } else if (segment.equals("that")) {
-
-
-            } else if (segment.equals("static")) {
-
-            } else if (segment.equals("temp")) {
-
-
-            } else if (segment.equals("pointer")) {
-                if(index==0) {
-
-                } else {
-
-                }
+            
+            switch (segment) {
+                case "constant":
+                    // carrega a constant em %A e move para %D
+                    commands.add("leaw $"+ index + ", %A");
+                    commands.add("movw %A, %D");
+                    // carrega o valor do SP e move a constant
+                    // para o topo da pilha
+                    commands.add("leaw $0,%A");
+                    commands.add("movw (%A),%A");
+                    commands.add("movw %D,(%A)");
+                    break;
+                case "local":
+                    commands.add("leaw $1, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A),%A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "argument":
+                    commands.add("leaw $2, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A),%A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "this":
+                    commands.add("leaw $3, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A),%A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "that":
+                    commands.add("leaw $4, %A");
+                    commands.add("movw (%A), %A");
+                    commands.add("addw $"+index+",%A, %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A),%A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "static":
+                    commands.add("leaw $"+(index)+", %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A),%A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "temp":
+                    commands.add("leaw $"+(5+index)+", %A");
+                    commands.add("movw (%A), %D");
+                    commands.add("leaw $0, %A");
+                    commands.add("movw (%A),%A");
+                    commands.add("movw %D, (%A)");
+                    break;
+                case "pointer":
+                    Error.error("Não faz sentido PUSH com pointer");
+                    break;
             }
+            // altera stack pointer: SP = SP + 1
+            commands.add("leaw $0,%A");
+            commands.add("movw (%A),%D");
+            commands.add("incw %D");
+            commands.add("movw %D, (%A)");
+                
         }
 
         String[] stringArray = new String[ commands.size() ];
