@@ -244,6 +244,14 @@ public class Code {
 
         List<String> commands = new ArrayList<String>();
         commands.add(String.format("; %d - Retorno de função", lineCode++));
+        //Valor apontado pelo SP é armazenado em $R2 (ARG 0)
+        commands.add("leaw $0,%A");
+        commands.add("movw (%A),%A");
+        commands.add("movw (%A),%D");
+        commands.add("leaw $2, %A");
+        commands.add("movw %D,(%A)");
+        //Restaurar configuracao dos LCL, ARG, THIS, THAT
+        //(resolucao vem aqui)
 
     }
 
