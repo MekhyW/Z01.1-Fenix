@@ -229,12 +229,14 @@ public class Code {
         List<String> commands = new ArrayList<String>();
         commands.add(String.format("; %d - Goto Condicional", lineCode++));
         commands.add("leaw $SP, %A");
-        commands.add("subw (%A), $1, %A");
         commands.add("movw (%A), %D");
         commands.add("leaw "+label+", %A");
-        commands.add("jg %D");
+        commands.add("jne %D");
         commands.add("nop");
-
+        
+        String[] stringArray = new String[ commands.size() ];
+        commands.toArray( stringArray );
+        write(stringArray);
      }
 
     /**
